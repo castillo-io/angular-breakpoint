@@ -64,10 +64,12 @@ You can set custom breakpoints via `$breakpointProvider` during the `config` pha
 myApp.config(function($breakpointProvider) {
 
   $breakpointProvider.set({
-    xs: '(max-width: 480px)',
-    sm: '(min-width: 481px) and (max-width: 768px)',
-    md: '(min-width: 769px) and (max-width: 991px)',
-    lg: '(min-width: 992px)'
+    appleWatch: '(max-device-width: 42mm) and (min-device-width: 38mm)',
+    mobile: 'handheld and (max-width: 768px)',
+    tablet: 'handheld and (min-width: 769px) and (max-width: 1190px)',
+    desktop: '(min-width: 1191x) and (max-width: 1400px)',
+    kiosk: '(min-width: 1401px) and (max-width: 1800px) and (min-aspect-ratio: 4/3)',
+    tv: 'tv and (scan: progressive)'
   });
 
 });

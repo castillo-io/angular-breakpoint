@@ -1,0 +1,26 @@
+{
+  "name": "angular-breakpoint",
+  "version": "1.0.0",
+  "description": "Adds responsive design (breakpoint) bindings to templates",
+  "main": "src/angular-breakpoint.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandercastillo/angular-breakpoint.git"
+  },
+  "keywords": [
+    "angularjs",
+    "breakpoint",
+    "responsive",
+    "design",
+    "css"
+  ],
+  "author": "Alex Castillo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandercastillo/angular-breakpoint/issues"
+  },
+  "homepage": "https://github.com/alexandercastillo/angular-breakpoint#readme"
+}

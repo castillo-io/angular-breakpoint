@@ -1,7 +1,7 @@
 {
   "name": "angular-breakpoint",
   "version": "1.0.0",
-  "description": "Adds responsive design (breakpoint) bindings to templates",
+  "description": "Add responsive design awareness to your angular templates",
   "main": "src/angular-breakpoint.js",
   "scripts": {
     "test": "gulp test"

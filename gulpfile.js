@@ -1,4 +1,3 @@
-
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 
@@ -11,11 +10,11 @@ var connect = require('gulp-connect');
  * {@link https://github.com/avevlad/gulp-connect gulp-connect}
  */
 gulp.task('demo', function () {
-    connect.server({
-        root: '.',
-        port: 9000,
-        livereload: true
-    });
+  connect.server({
+    root: '.',
+    port: 9000,
+    livereload: true
+  });
 });
 
 /**
@@ -27,8 +26,8 @@ gulp.task('demo', function () {
  * {@link https://github.com/avevlad/gulp-connect gulp-connect}
  */
 gulp.task('watch', function () {
-    gulp.src('demo/*')
-        .pipe(connect.reload());
+  gulp.src('demo/*')
+    .pipe(connect.reload());
 });
 
 /**
@@ -36,5 +35,5 @@ gulp.task('watch', function () {
  * @name gulpTasks.default
  */
 gulp.task('default', [
-    'demo'
+  'demo'
 ]);

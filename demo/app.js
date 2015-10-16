@@ -1,18 +1,18 @@
-(function() {
+(function () {
 
-    angular
-        .module('breakpointDemo', ['ghsBreakpoint'])
-        .config(breakpointConfig);
+  angular
+    .module('breakpointDemo', ['ghsBreakpoint'])
+    .config(breakpointConfig);
 
-    function breakpointConfig ($breakpointProvider) {
+  function breakpointConfig($breakpointProvider) {
 
-        $breakpointProvider.set({
-            xs: '(max-width: 480px)',
-            sm: '(min-width: 481px) and (max-width: 768px)',
-            md: '(min-width: 769px) and (max-width: 991px)',
-            lg: '(min-width: 992px)'
-        });
+    $breakpointProvider.set({
+      xs: '(max-width: 480px)',
+      sm: '(min-width: 481px) and (max-width: 768px)',
+      md: '(min-width: 769px) and (max-width: 991px)',
+      lg: '(min-width: 992px)'
+    });
 
-    }
+  }
 
 })();

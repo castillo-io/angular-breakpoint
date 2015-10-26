@@ -6,7 +6,7 @@ Angular Breakpoint listens for media query changes and updates the global scope 
 
 ### Demo
 
-[Angular Breakpoint Demo](http://alexandercastillo.github.io/angular-breakpoint)
+[Angular Breakpoint Demo](http://codepen.io/alexandercastillo/pen/rOdKwJ)
 
 
 ### Quick Start
@@ -58,7 +58,7 @@ In the same way, it can be used in other directives like `ng-class`.
 </body>
 ```
 
-See [demo](http://alexandercastillo.github.io/angular-breakpoint) for more information.
+See [demo](http://codepen.io/alexandercastillo/pen/rOdKwJ) for more information.
 
 
 ### Default Breakpoints

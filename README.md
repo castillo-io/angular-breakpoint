@@ -1,8 +1,8 @@
-# Angular Breakpoint
+# AngularBreakpoint
 
 ##### Add responsive design awareness to your angular templates
 
-Angular Breakpoint listens for media query change events and updates the global scope of your app with the active breakpoint.
+Angular Breakpoint listens for media query changes and updates the global scope of your app with the active breakpoint.
 
 ### Demo
 
@@ -28,10 +28,10 @@ $ bower install angular-breakpoint
 <script src="/libs/angular-breakpoint/angular-breakpoint.min.js"></script>
 ```
 
-2) Add `ghsBreakpoint` as a dependency for your app.
+2) Add `ngBreakpoint` as a dependency in your app.
 
 ``` js
-var myApp = angular.module('myApp', ['ghsBreakpoint']);
+var myApp = angular.module('myApp', ['ngBreakpoint']);
 ```
 
 ### Examples
@@ -42,7 +42,23 @@ This module can be used by adding the `breakpoint` directive to your main templa
 <html ng-app="myApp" breakpoint>
 ```
 
-See demo for more information.
+Then, default or custom breakpoints will be accessible in your templates. The following example illustrates how a DOM element can only be visible on small screens.
+
+```html
+<nav ng-if="breakpoint.sm">
+  ...
+</nav>
+```
+
+In the same way, it can be used in other directives like `ng-class`.
+
+```html
+<body ng-class="{ 'mobile': breakpoint.sm, 'tablet': breakpoint.md, 'desktop': breakpoint.lg }">
+  ...
+</body>
+```
+
+See [demo](http://alexandercastillo.github.io/angular-breakpoint) for more information.
 
 
 ### Default Breakpoints
@@ -58,7 +74,7 @@ See demo for more information.
 
 ### Configuring custom breakpoints
 
-You can set custom breakpoints via `$breakpointProvider` during the `config` phase of your app .
+You can set custom breakpoints via `$breakpointProvider` during the `config` phase of your app.
 
 ``` js
 myApp.config(function($breakpointProvider) {
@@ -82,9 +98,9 @@ AngularBreakpoint is fully supported by AngularJS 1.3+
 
 #### Browsers
 
-Chrome, Firefox, Safari, iOS Safari, Android and IE9+
+Chrome, Firefox, Safari, iOS Safari, Android and IE10+
 
-IE9 Does not support [matchMedia](http://caniuse.com/#feat=matchmedia) API. 
+Unfortunately, IE9 Does not support the [matchMedia](http://caniuse.com/#feat=matchmedia) API. 
 
 
 ### Contributing

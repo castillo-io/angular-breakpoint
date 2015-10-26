@@ -6,7 +6,7 @@ Angular Breakpoint listens for media query changes and updates the global scope 
 
 ### Demo
 
-[Angular Breakpoint Demo](http://alexandercastillo.github.io/angular-breakpoint) ([source](../gh-pages/app.js))
+[Angular Breakpoint Demo](http://alexandercastillo.github.io/angular-breakpoint)
 
 
 ### Quick Start

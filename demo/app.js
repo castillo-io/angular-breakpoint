@@ -1,7 +1,7 @@
 (function () {
 
   angular
-    .module('breakpointDemo', ['ghsBreakpoint'])
+    .module('breakpointDemo', ['ngBreakpoint'])
     .config(breakpointConfig);
 
   function breakpointConfig($breakpointProvider) {

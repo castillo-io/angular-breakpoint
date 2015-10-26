@@ -7,7 +7,7 @@
    * Adds responsive design (breakpoint) bindings to templates
    */
   angular
-    .module('ghsBreakpoint', [])
+    .module('ngBreakpoint', [])
     .provider('$breakpoint', breakpointProvider)
     .directive('breakpoint', breakpointDirective);
 

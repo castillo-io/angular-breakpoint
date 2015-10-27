@@ -2,7 +2,7 @@
 
   /**
    * @ngdoc object
-   * @name ghsBreakpoint
+   * @name ngBreakpoint
    * @description
    * Adds responsive design (breakpoint) bindings to templates
    */
@@ -28,13 +28,57 @@
     };
 
     return {
+      /**
+       * @ngdoc function
+       * @name set
+       * @description
+       * Sets custom breakpoints during the config phase of the module
+       */
       set: function (customBreakpoints) {
         if (customBreakpoints) {
           breakpoints = customBreakpoints;
         }
       },
-      $get: function () {
+      /**
+       * @ngInject
+       */
+      $get: function ($rootScope, $window) {
         return {
+          /**
+           * @ngdoc function
+           * @name init
+           * @description
+           * Initializes media query listeners based on breakpoints defined
+           */
+          init: function () {
+
+            var mediaQuery = {},
+              mediaQueryListener = {};
+
+            $rootScope.breakpoint = {};
+
+            angular.forEach(breakpoints, function (query, breakpoint) {
+              mediaQuery[breakpoint] = $window.matchMedia(query);
+              mediaQueryListener[breakpoint] = function (mediaQuery) {
+                // Trigger digest cycle
+                $rootScope.$evalAsync(function () {
+                  // Update breakpoint
+                  $rootScope.breakpoint[breakpoint] = mediaQuery.matches;
+                });
+              };
+              // Listen for media query changes
+              mediaQuery[breakpoint].addListener(mediaQueryListener[breakpoint]);
+              // Execute first media query check
+              mediaQueryListener[breakpoint](mediaQuery[breakpoint]);
+            });
+
+          },
+          /**
+           * @ngdoc function
+           * @name get
+           * @description
+           * Gets default or custom breakpoints from service
+           */
           get: function () {
             return breakpoints;
           }
@@ -46,33 +90,12 @@
   /**
    * @ngInject
    */
-  function breakpointDirective($rootScope, $window, $breakpoint) {
+  function breakpointDirective($breakpoint) {
     return {
       restrict: 'A',
       scope: {},
-      link: function breakpointLink(scope) {
-
-        var mediaQuery = {},
-          mediaQueryListener = {},
-          breakpoints = $breakpoint.get();
-
-        $rootScope.breakpoint = {};
-
-        angular.forEach(breakpoints, function (query, breakpoint) {
-          mediaQuery[breakpoint] = $window.matchMedia(query);
-          mediaQueryListener[breakpoint] = function (mediaQuery) {
-            // Trigger digest cycle
-            scope.$evalAsync(function () {
-              // Update breakpoint
-              $rootScope.breakpoint[breakpoint] = mediaQuery.matches;
-            });
-          };
-          // Listen for media query changes
-          mediaQuery[breakpoint].addListener(mediaQueryListener[breakpoint]);
-          // Execute first media query check
-          mediaQueryListener[breakpoint](mediaQuery[breakpoint]);
-        });
-
+      link: function breakpointLink() {
+        $breakpoint.init();
       }
     };
   }

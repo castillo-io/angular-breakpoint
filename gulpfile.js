@@ -3,6 +3,7 @@ var connect = require('gulp-connect');
 var karma = require('gulp-karma');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
+var rename = require('gulp-rename');
 
 /**
  * @ngdoc object
@@ -75,6 +76,9 @@ gulp.task('build', function() {
     .pipe(ngAnnotate())
     .pipe(uglify({
       preserveComments: 'license'
+    }))
+    .pipe(rename({
+      suffix: ".min"
     }))
     .pipe(gulp.dest('dist'));
 });

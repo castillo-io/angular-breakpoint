@@ -8,6 +8,12 @@ describe('ngBreakpoint', function () {
       md: '(min-width: 769px) and (max-width: 991px)',
       lg: '(min-width: 992px)'
     },
+    mediaMatches = {
+      xs: false,
+      sm: false,
+      md: false,
+      lg: false
+    },
     customBreakpoints = {
       kiosk: '(min-width: 1401px) and (max-width: 1800px) and (min-aspect-ratio: 4/3)',
       tv: 'tv and (scan: progressive)'
@@ -18,9 +24,7 @@ describe('ngBreakpoint', function () {
     var $rootScope,
       $breakpoint;
 
-    beforeEach(function () {
-      module('ngBreakpoint');
-    });
+    beforeEach(module('ngBreakpoint'));
 
     beforeEach(inject(function (_$rootScope_, _$breakpoint_) {
       $breakpoint = _$breakpoint_;
@@ -31,6 +35,42 @@ describe('ngBreakpoint', function () {
       $breakpoint.init();
       expect($rootScope.breakpoint).toBeDefined();
     });
+
+    if (window.matchMedia(defaultBreakpoints.xs).matches) {
+      it('should update xs breakpoint in rootScope when window width <= 480px', function () {
+        $breakpoint.init();
+        $rootScope.$digest();
+        var xs = angular.extend(mediaMatches, { xs: true });
+        expect($rootScope.breakpoint).toEqual(xs);
+      });
+    }
+
+    if (window.matchMedia(defaultBreakpoints.sm).matches) {
+      it('should update xs breakpoint in rootScope when window width > 480px && <= 768px', function () {
+        $breakpoint.init();
+        $rootScope.$digest();
+        var sm = angular.extend(mediaMatches, { sm: true });
+        expect($rootScope.breakpoint).toEqual(sm);
+      });
+    }
+
+    if (window.matchMedia(defaultBreakpoints.md).matches) {
+      it('should update xs breakpoint in rootScope when window width > 768px && <= 991px', function () {
+        $breakpoint.init();
+        $rootScope.$digest();
+        var md = angular.extend(mediaMatches, { md: true });
+        expect($rootScope.breakpoint).toEqual(md);
+      });
+    }
+
+    if (window.matchMedia(defaultBreakpoints.lg).matches) {
+      it('should update xs breakpoint in rootScope when window width > 992px', function () {
+        $breakpoint.init();
+        $rootScope.$digest();
+        var lg = angular.extend(mediaMatches, { lg: true });
+        expect($rootScope.breakpoint).toEqual(lg);
+      });
+    }
 
   });
 

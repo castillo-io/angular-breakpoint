@@ -45,7 +45,26 @@ module.exports = function (config) {
     autoWatch: true,
 
     // start these browsers
-    browsers: ['Chrome'],
+    browsers: ['xs','sm','md','lg'],
+
+    customLaunchers: {
+      xs: {
+        base: 'Chrome',
+        flags: ['--window-size=480,600']
+      },
+      sm: {
+        base: 'Chrome',
+        flags: ['--window-size=760,600']
+      },
+      md: {
+        base: 'Chrome',
+        flags: ['--window-size=991,600']
+      },
+      lg: {
+        base: 'Chrome',
+        flags: ['--window-size=1200,600']
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

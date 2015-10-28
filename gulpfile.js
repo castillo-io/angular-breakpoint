@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
 var karma = require('gulp-karma');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');
 
 /**
  * @ngdoc object
@@ -58,4 +60,21 @@ gulp.task('test', function () {
       console.log(err);
       this.emit('end');
     });
+});
+
+/**
+ * @ngdoc object
+ * @name gulpTasks.build
+ * @description
+ * Annotate and uglify the source code
+ * {@link https://www.npmjs.com/package/gulp-ng-annoatate }
+ * {@link https://www.npmjs.com/package/gulp-uglify }
+ */
+gulp.task('build', function() {
+  return gulp.src('src/*.js')
+    .pipe(ngAnnotate())
+    .pipe(uglify({
+      preserveComments: 'license'
+    }))
+    .pipe(gulp.dest('dist'));
 });

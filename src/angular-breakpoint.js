@@ -1,4 +1,4 @@
-(function () {
+(function (angular) {
 
   /**
    * @ngdoc object
@@ -100,4 +100,4 @@
     };
   }
 
-})();
+})(angular);

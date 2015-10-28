@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
+var karma = require('gulp-karma');
 
 /**
  * @ngdoc object
@@ -37,3 +38,24 @@ gulp.task('watch', function () {
 gulp.task('default', [
   'demo'
 ]);
+
+/**
+ * @ngdoc object
+ * @name gulpTasks.test
+ * @description
+ * Runs unit tests
+ * {@link https://github.com/lazd/gulp-karma gulp-karma }
+ */
+gulp.task('test', function () {
+  //Use a fake src to run the tests specified in the karma config file
+  return gulp.src('./unit')
+    .pipe(karma({
+      configFile: 'test/karma.conf.js',
+      action: 'run',
+      singleRun: true
+    }))
+    .on('error', function (err) {
+      console.log(err);
+      this.emit('end');
+    });
+});

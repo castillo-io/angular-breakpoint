@@ -1,3 +1,11 @@
+/**
+ * Angular Breakpoint
+ * @version v1.0
+ * @author Alex Castillo
+ * @link http://www.github.com/alexandercastillo/angular-breakpoint
+ * @license MIT License, http://www.opensource.org/licenses/MIT
+ */
+
 (function (angular) {
 
   /**

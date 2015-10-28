@@ -94,7 +94,7 @@
     return {
       restrict: 'A',
       scope: {},
-      link: function breakpointLink() {
+      controller: function breakpointLink() {
         $breakpoint.init();
       }
     };

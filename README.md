@@ -24,7 +24,7 @@ $ bower install angular-breakpoint
 1) Include the required JavaScript libraries in your `index.html` (ngRoute and UI Router are optional). 
 
 ``` html
-<script src="/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="/libs/angular-breakpoint/angular-breakpoint.min.js"></script>
 ```
 
